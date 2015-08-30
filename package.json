@@ -1,6 +1,6 @@
 {
   "name": "cdefs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "describe c function prototypes in JSON.",
   "main": "cdefs.js",
   "bin": {
@@ -8,6 +8,10 @@
   },
   "scripts": {
     "test": "./bin/cli.js ex1.c ex2.c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mateogianolio/cdefs.git"
   },
   "author": "Mateo Gianolio",
   "license": "MIT"

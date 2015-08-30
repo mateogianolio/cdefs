@@ -1,6 +1,27 @@
 # cdefs
 
-Extract function prototypes in C source files to JSON.
+Describe C function prototypes in JSON.
+
+```c
+const char* get_name(int id) {
+  // ...
+}
+```
+=>
+```javascript
+{
+  "get_name": {
+    "returns": "const char*",
+    "arguments": [
+      {
+        "type": "int",
+        "name": "id"
+      }
+    ]
+  }
+}
+```
+
 
 ### Install
 
