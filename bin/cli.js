@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 var fs = require('fs'),
-    proto = require('../');
+    cdefs = require('../');
 
 var args = process.argv;
 if(args.length < 3) {
   console.log('Error: not enough arguments.');
-  console.log('proto [-o output_file] [file1, [file2, [...]]]');
+  console.log('cdefs [-o output_file] [file1, [file2, [...]]]');
   return;
 }
 
@@ -32,9 +32,9 @@ while(args.length) {
   }
 
   if(len > 1)
-    list[arg] = proto(arg);
+    list[arg] = cdefs(arg);
   else
-    list = proto(arg);
+    list = cdefs(arg);
 }
 
 if(file)

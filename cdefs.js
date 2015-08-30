@@ -4,7 +4,8 @@
   var fs = require('fs');
 
   /**
-   * Extract function prototypes in C source files to JSON.
+   * cdefs
+   * Describe C function prototypes in JSON.
    * @param {file} src
    * @return {Object} tags
    **/
@@ -49,7 +50,7 @@
     lines = lines.filter(function(line) {
       return line &&
              (line
-               .split(' ')
+               .split(/ |\(/g)
                .shift()
                .match(/if|for|while/) || []).length !== 1;
     });
@@ -63,20 +64,37 @@
         .match(/\((.*)\)/g)
         .join('');
 
-      line = line.replace(args, '');
-      line = line.split(' ');
+      line = line
+        .replace(args, '')
+        .split(' ');
 
       name = line.pop();
       type = line.join(' ');
 
-      args = args.replace(/\(|\)/g, '');
-      args = args.split(',');
-      args = args.map(function(arg) {
-        return arg.trim();
-      });
-      args = args.filter(function(arg) {
-        return arg.length;
-      });
+      args = args
+        .replace(/\(|\)/g, '')
+        .split(',')
+        .map(function(arg) {
+          return arg.trim();
+        })
+        .filter(function(arg) {
+          return arg.length;
+        })
+        .map(function(arg) {
+          var ptrCount = (arg.match(/\*|\[\]/g) || []).length,
+              ptrs = '';
+          for(var i = 0; i < ptrCount; i++)
+            ptrs += '*';
+
+          arg = arg
+            .replace(/\*|\[|\]/g, '')
+            .split(' ');
+
+          return {
+            type: arg.shift() + ptrs,
+            name: arg.join(' ')
+          };
+        });
 
       tags[name] = {
         returns: type,

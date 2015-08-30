@@ -1,11 +1,11 @@
-# node-cproto
+# cdefs
 
 Extract function prototypes in C source files to JSON.
 
 ### Install
 
 ```bash
-$ npm install cproto -g
+$ npm install cdefs -g
 ```
 
 ### Usage
@@ -13,13 +13,13 @@ $ npm install cproto -g
 #### from command-line
 
 ```bash
-$ proto [-o output_file] [file1, [file2, [...]]]
+$ cdefs [-o output_file] [file1, [file2, [...]]]
 ```
 
 Inspect ```ex1.c``` and ```ex2.c``` and print prototypes to ```stdout```.
 
 ```bash
-$ proto ex1.c ex2.c
+$ cdefs ex1.c ex2.c
 {
   "ex1.c": {
     "main": {
@@ -48,19 +48,19 @@ $ proto ex1.c ex2.c
 Inspect ```ex2.c``` and save prototypes to ```ex2.json```:
 
 ```bash
-$ proto ex2.c -o ex2.json
+$ cdefs ex2.c -o ex2.json
 ```
 
 #### from your module
 
 ```javascript
-var proto = require('cproto');
+var cdefs = require('cdefs');
 ```
 
 Get the prototypes for ```ex1.c```:
 
 ```javascript
-var prototypes = proto('example.c');
+var prototypes = cdefs('ex1.c');
 ```
 
 ### Contribute
