@@ -16,19 +16,39 @@ $ npm install cproto -g
 $ proto [-o output_file] [file1, [file2, [...]]]
 ```
 
-Inspect ```example.c``` and print prototypes to ```stdout```.
+Inspect ```ex1.c``` and ```ex2.c``` and print prototypes to ```stdout```.
 
 ```bash
-$ proto example.c
-{ main: { returns: 'int', arguments: [ 'int argc', 'char** argv' ] },
-  test: { returns: 'float', arguments: [] },
-  print: { returns: 'void', arguments: [ 'char * str' ] } }
+$ proto ex1.c ex2.c
+{
+  "ex1.c": {
+    "main": {
+      "returns": "int",
+      "arguments": [
+        "int argc",
+        "char** argv"
+      ]
+    }
+  },
+  "ex2.c": {
+    "test": {
+      "returns": "float",
+      "arguments": []
+    },
+    "print": {
+      "returns": "void",
+      "arguments": [
+        "char * str"
+      ]
+    }
+  }
+}
 ```
 
-Inspect ```example.c``` and save prototypes to ```example.json```:
+Inspect ```ex2.c``` and save prototypes to ```ex2.json```:
 
 ```bash
-$ proto example.c -o example.json
+$ proto ex2.c -o ex2.json
 ```
 
 #### from your module
@@ -37,7 +57,7 @@ $ proto example.c -o example.json
 var proto = require('cproto');
 ```
 
-Save the prototypes for ```example.c``` to ```prototypes```:
+Get the prototypes for ```ex1.c```:
 
 ```javascript
 var prototypes = proto('example.c');

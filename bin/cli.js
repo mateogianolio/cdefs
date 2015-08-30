@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs'),
-    tags = require('../');
+    proto = require('../');
 
 var args = process.argv;
 if(args.length < 3) {
@@ -15,6 +15,7 @@ args.shift();
 args.shift();
 
 var list = {},
+    len = args.length,
     arg,
     file;
 
@@ -30,13 +31,13 @@ while(args.length) {
     continue;
   }
 
-  if(args.length > 1)
-    list[arg] = tags(arg);
+  if(len > 1)
+    list[arg] = proto(arg);
   else
-    list = tags(arg);
+    list = proto(arg);
 }
 
 if(file)
-  fs.writeFileSync(file, JSON.stringify(list));
+  fs.writeFileSync(file, JSON.stringify(list, null, '  '));
 else if(Object.keys(list).length)
-  console.log(list);
+  console.log(JSON.stringify(list, null, '  '));
