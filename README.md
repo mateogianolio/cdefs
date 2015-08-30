@@ -12,6 +12,10 @@ $ npm install cproto -g
 
 #### from command-line
 
+```bash
+$ proto [-o output_file] [file1, [file2, [...]]]
+```
+
 Inspect ```example.c``` and print prototypes to ```stdout```.
 
 ```bash
@@ -31,7 +35,12 @@ $ proto example.c -o example.json
 
 ```javascript
 var proto = require('cproto');
-console.log(proto('example.c'));  
+```
+
+Save the prototypes for ```example.c``` to ```prototypes```:
+
+```javascript
+var prototypes = proto('example.c');
 ```
 
 ### Contribute
