@@ -7,7 +7,7 @@
     "proto": "./bin/cli.js"
   },
   "scripts": {
-    "test": "./bin/cli.js example.c"
+    "test": "./bin/cli.js ex1.c ex2.c"
   },
   "author": "Mateo Gianolio",
   "license": "MIT"
