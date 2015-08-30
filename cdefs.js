@@ -92,7 +92,7 @@
 
           return {
             type: arg.shift() + ptrs,
-            name: arg.join(' ')
+            name: arg.join(' ').trim()
           };
         });
 
