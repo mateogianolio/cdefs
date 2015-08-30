@@ -4,7 +4,7 @@
   var fs = require('fs');
 
   /**
-   * Extract function prototypes from C source files to JSON.
+   * Extract function prototypes in C source files to JSON.
    * @param {file} src
    * @return {Object} tags
    **/

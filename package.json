@@ -1,7 +1,7 @@
 {
   "name": "cproto",
   "version": "0.1.0",
-  "description": "extract function prototypes from C source files to JSON.",
+  "description": "extract function prototypes in C source files to JSON.",
   "main": "cproto.js",
   "bin": {
     "proto": "./bin/cli.js"
