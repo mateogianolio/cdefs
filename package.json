@@ -4,10 +4,10 @@
   "description": "describe c function prototypes in JSON.",
   "main": "cdefs.js",
   "bin": {
-    "proto": "./bin/cli.js"
+    "cdefs": "./bin/cli.js"
   },
   "scripts": {
-    "test": "./bin/cli.js ex1.c ex2.c"
+    "test": "node example/buffer.js"
   },
   "repository": {
     "type": "git",

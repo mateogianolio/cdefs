@@ -40,7 +40,7 @@ $ cdefs [-o output_file] [file1, [file2, [...]]]
 Inspect ```ex1.c``` and ```ex2.c``` and print prototypes to ```stdout```.
 
 ```bash
-$ cdefs ex1.c ex2.c
+$ cdefs example/ex1.c example/ex2.c
 {
   "ex1.c": {
     "main": {
@@ -78,7 +78,7 @@ $ cdefs ex1.c ex2.c
 Inspect ```ex2.c``` and save prototypes to ```ex2.json```:
 
 ```bash
-$ cdefs ex2.c -o ex2.json
+$ cdefs example/ex2.c -o ex2.json
 ```
 
 #### from your module
@@ -90,7 +90,7 @@ var cdefs = require('cdefs');
 Get the prototypes for ```ex1.c```:
 
 ```javascript
-var prototypes = cdefs('ex1.c');
+var prototypes = cdefs('./example/ex1.c');
 ```
 
 ### Contribute
