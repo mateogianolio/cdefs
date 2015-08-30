@@ -1,0 +1,14 @@
+{
+  "name": "cproto",
+  "version": "0.1.0",
+  "description": "extract function prototypes from C source files",
+  "main": "cproto.js",
+  "bin": {
+    "proto": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "./bin/cli.js example.c"
+  },
+  "author": "Mateo Gianolio",
+  "license": "MIT"
+}
