@@ -46,8 +46,14 @@ $ cdefs ex1.c ex2.c
     "main": {
       "returns": "int",
       "arguments": [
-        "int argc",
-        "char** argv"
+        {
+          "type": "int",
+          "name": "argc"
+        },
+        {
+          "type": "char**",
+          "name": "argv"
+        }
       ]
     }
   },
@@ -59,7 +65,10 @@ $ cdefs ex1.c ex2.c
     "print": {
       "returns": "void",
       "arguments": [
-        "char * str"
+        {
+          "type": "char*",
+          "name": " str"
+        }
       ]
     }
   }
