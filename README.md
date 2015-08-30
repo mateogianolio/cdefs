@@ -1,6 +1,6 @@
 # node-cproto
 
-Extract function prototypes from C source files.
+Extract function prototypes from C source files to JSON.
 
 ### Install
 
