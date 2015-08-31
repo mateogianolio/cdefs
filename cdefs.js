@@ -13,20 +13,21 @@
 
     // remove everything inside curly-braces { ... }
     src = src
-      .replace(/(\{([\s\S]*?)\})|((  |    |\t)(.*)$)/gm, '')
+      .replace(/(\{([\s\S]*?)\})/gm, '')
       .replace(/\{|\}/g, '');
 
-    var lines = src.split(/\n|\);|;/g);
+    var lines = src.split(/\n|\\n|;/g);
 
     /**
      * filter preprocessor directives, empty lines
      * and variable declarations
      **/
-    lines = lines.filter(function(line) {
-      return line.length &&
-             line.indexOf('#') !== 0 &&
-             line.indexOf('=') === -1;
-    });
+    lines = lines
+      .filter(clean)
+      .filter(function(line) {
+        return line.indexOf('#') !== 0 &&
+               line.indexOf('=') === -1;
+      });
 
     /**
      * if function declared on two lines, e.g.
@@ -43,29 +44,33 @@
     });
 
     // clean up
-    lines = lines.filter(function(line) {
-      return line &&
-             (line
-               .split(/ |\(/g)
-               .shift()
-               .match(/if|for|while/) || []).length !== 1;
-    });
+    lines = lines.filter(clean);
 
     var tags = {},
         name,
         type,
         args;
+
     lines.forEach(function(line, i, _lines) {
-      args = line
-        .match(/\((.*)\)/g)
+      args = (line
+        .match(/\((.*)\)/g) || [])
         .join('');
 
       line = line
         .replace(args, '')
-        .split(' ');
+        .split(' ')
+        .filter(clean);
+
+      if(line.length === 1)
+        return;
 
       name = line.pop();
+      if(name === undefined)
+        return;
+
       type = line.join(' ');
+      if(type === undefined)
+        return;
 
       args = args
         .replace(/\(|\)/g, '')
@@ -73,9 +78,7 @@
         .map(function(arg) {
           return arg.trim();
         })
-        .filter(function(arg) {
-          return arg.length;
-        })
+        .filter(clean)
         .map(function(arg) {
           var ptrCount = (arg.match(/\*|\[\]/g) || []).length,
               ptrs = '';
@@ -102,4 +105,8 @@
 
     return tags;
   };
+
+  function clean(element) {
+    return element && element.length;
+  }
 }());
