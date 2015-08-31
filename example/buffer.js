@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  var cdefs = require('../');
+  var fs = require('fs'),
+      cdefs = require('../');
 
   // buffer.c borrowed from clibs/buffer
   console.log('example/buffer.c:');
-  console.log(JSON.stringify(cdefs('./example/buffer.c'), null, '  '));
+  console.log(JSON.stringify(cdefs(fs.readFileSync('./example/buffer.c', 'utf8')), null, '  '));
 }());

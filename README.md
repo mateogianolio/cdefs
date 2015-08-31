@@ -90,7 +90,9 @@ var cdefs = require('cdefs');
 Get the prototypes for ```ex1.c```:
 
 ```javascript
-var prototypes = cdefs('./example/ex1.c');
+var fs = require('fs'),
+    src = fs.readFileSync('./example/ex1.c', 'utf8'),
+    prototypes = cdefs(src);
 ```
 
 ### Contribute

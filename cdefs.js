@@ -1,17 +1,13 @@
 (function() {
   'use strict';
 
-  var fs = require('fs');
-
   /**
    * cdefs
    * Describe C function prototypes in JSON.
-   * @param {file} src
+   * @param {String} src
    * @return {Object} tags
    **/
-  module.exports = function(file) {
-    var src = fs.readFileSync(file, 'utf8');
-
+  module.exports = function(src) {
     // remove single- and multi-line comments
     src = src.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
 
