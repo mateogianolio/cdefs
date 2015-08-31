@@ -17,7 +17,8 @@ args.shift();
 var list = {},
     len = args.length,
     arg,
-    file;
+    file,
+    src;
 
 while(args.length) {
   arg = args.shift();
@@ -31,10 +32,12 @@ while(args.length) {
     continue;
   }
 
+  src = fs.readFileSync(arg, 'utf8');
+
   if(len > 1)
-    list[arg] = cdefs(arg);
+    list[arg] = cdefs(src);
   else
-    list = cdefs(arg);
+    list = cdefs(src);
 }
 
 if(file)
