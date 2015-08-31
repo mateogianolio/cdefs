@@ -90,8 +90,8 @@
             .split(' ');
 
           return {
-            type: arg.shift() + ptrs,
-            name: arg.join(' ').trim()
+            name: arg.pop().trim(),
+            type: arg.join(' ').trim() + ptrs,
           };
         });
 

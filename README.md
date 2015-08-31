@@ -14,8 +14,8 @@ const char* get_name(int id) {
     "returns": "const char*",
     "arguments": [
       {
-        "type": "int",
-        "name": "id"
+        "name": "id",
+        "type": "int"
       }
     ]
   }
@@ -47,12 +47,12 @@ $ cdefs example/ex1.c example/ex2.c
       "returns": "int",
       "arguments": [
         {
-          "type": "int",
-          "name": "argc"
+          "name": "argc",
+          "type": "int"
         },
         {
-          "type": "char**",
-          "name": "argv"
+          "name": "argv",
+          "type": "char**"
         }
       ]
     }
@@ -66,8 +66,8 @@ $ cdefs example/ex1.c example/ex2.c
       "returns": "void",
       "arguments": [
         {
-          "type": "char*",
-          "name": " str"
+          "name": " str",
+          "type": "char*"
         }
       ]
     }
